@@ -1,5 +1,9 @@
 # Tổng quan về CI/CD
-## **1) CI là gì?**
+## **1) Bối cảnh triển khai trước dây**
+- Trước khi khái niệm tích hợp liên tục (**Continuous Integration - CI**) ra đời, có một quy tắc mà các developer phải luôn nhớ là "***Don’t break the nightly build!***". 
+- Trước kia, hầu hết việc deploy một sản phẩm phần mềm đều dựa theo một quy trình gọi là "***Nightly build***" - người tiền nhiệm của **Continuous Integration**. Cụ thể về quy trình này là mỗi đêm hệ thống sẽ `pull` code của tất cả các developer đã viết trong ngày hôm đó về và `build` để có thể `deploy` phiên bản mới nhất của sản phầm cho các tester vào ngày tiếp theo. 
+- Tuy nhiên quy trình này có một rủi ro là nếu có bất kỳ một đoạn code lỗi nào thì quá trình `build` sẽ trở thành công cốc và để tìm được đoạn code lỗi đó nằm ở `commit` nào để sửa cũng rất đau đầu, vì thế, để đảm bảo quá trình `build` trơn tru thì các developer phải `build` và `test` thật kỹ trước khi đẩy code của mình lên. Nhưng không điều gì có thể chắc chắc rằng cục code to đùng tích hợp bởi hàng trăm `commit` kia có thể luôn `build` thành công mỗi đêm được.
+## **2) CI là gì?**
 - **CI - *Continuous Integration*** là phương pháp phát triển phần mềm yêu cầu các thành viên của team tích hợp công việc của họ thường xuyên, mỗi ngày ít nhất một lần. Mỗi tích hợp được "`build`" tự động (bao gồm cả `test`) nhằm phát hiện lỗi nhanh nhất có thể. Cả team nhận thấy rằng cách tiếp cận này giảm thiểu vấn đề tích hợp và cho phép phát triển phần mềm nhanh hơn.
 
     <p align=center><img src=https://i.imgur.com/wTpkgu4.png></p>
@@ -16,7 +20,7 @@
     - Giảm thiểu rủi ro nhờ việc phát hiện lỗi và fix sớm, tăng chất lượng phần mềm nhờ việc tự động `test` và `inspect` (đây cũng là một trong những lợi ích của CI, code được `inspect` tự động dựa theo config đã cài đặt, đảm bảo coding style, chẳng hạn một function chỉ được dài không quá 10 dòng code ...)
     - Giảm thiểu những quy trình thủ công lặp đi lặp lại (build css, js, migrate, test...), thay vì đó là build tự động, chạy test tự động.
     - Sinh ra phần mềm có thể deploy ở bất kì thời gian, địa điểm.
-## **2) CD là gì?**
+## **3) CD là gì?**
 - Trong khi **Continuous Integration** là quy trình để `build` và `test` tự động, thì **Continuous Delivery** (tạm dịch là *chuyển giao liên tục*) lại nâng cao hơn một chút, bằng cách triển khai tất cả thay đổi về code (đã được `build` và `test`) đến môi trường **testing** hoặc **staging**. **Continuous Delivery** cho phép developer tự động hóa phần testing bên cạnh việc sử dụng `unit test`, kiểm tra phần mềm qua nhiều thước đo trước khi triển khai cho khách hàng (**production**). Những bài test này bao gồm UI testing, load testing, integration testing, API testing... Nó tự động hoàn toàn quy trình release phần mềm.
 
     <p align=center><img src=https://i.imgur.com/E0a6dwa.png></p>
