@@ -21,7 +21,12 @@
 - **Kohsuke Kawaguchi**, một Java developer làm việc tại **Sun Microsystems**, đã cảm thấy mệt mỏi với việc build code và sửa code lặp đi lặp lại. Năm `2004`, anh tạo ra một máy chủ tự động hóa tên là **Hudson** để tự động hóa các tác vụ `build` và `test`.
 - Năm `2011`, **Oracle** sở hữu **Sun Microsystems** đã có tranh chấp với cộng đồng mã nguồn mở **Hudson**, vì vậy họ đã fork **Hudson** về và đổi tên thành **Jenkins**.
 - Cả **Hudson** và **Jenkins** vẫn tiếp tục hoạt động độc lập. Nhưng trong một thời gian ngắn, **Jenkin** đã có được rất nhiều contributors và projects trong khi**Hudson** chỉ duy trì với `32` projects. Sau đó theo thời gian, **Jenkins** trở nên nổi tiếng hơn, và **Hudson** cũng không còn được duy trì nữa.
-## **3) Workflow của Jenkins**
+## **3) Các bản phát hành của Jenkins**
+- **Jenkins** đưa ra các thời hạn release phiên bản dựa theo nhu cầu của các tổ chức :
+    - **Long term support release (LTS)** : Bản **LTS** sẽ phát hành mỗi `12` tuần 1 lần. Chúng ổn định và đã được test, sử dụng rộng rãi. Về cơ bản, bản phát hành này dành cho end-user
+    - **Weekly release** : Bản phát hành này có sẵn hàng tuần bằng cách sửa các lỗi trong phiên bản trước đó. Các bản phát hành này dành cho các nhà phát triển plugin.
+    > Nên sử dụng bản phát hành **LTS**.
+## **4) Workflow của Jenkins**
 - Dưới đây là quy trình làm việc của **Jenkins** :
     - Các developer `commit` code thay đổi lên repository.
     - **Jenkins CI Server** đều đặn kiểm tra repository và phát hiện bất kỳ code mới nào được thêm vào.
@@ -31,7 +36,7 @@
 
         <img src=https://i.imgur.com/3B5WLN4.png>
 - Các file có thể chứa nhiều sự thay đổi code và các thay đổi này có thể rất lớn, yêu cầu nhiều lần `build`. Khi đó một server sẽ khó có thể đáp ứng được.Trong trường hợp này ta có thể xây dựng **Jenkins** thành một hệ phân tán để có thể giải quyết bài toán này.
-## **4) Kiến trúc triển khai Jenkins**
+## **5) Kiến trúc triển khai Jenkins**
 - **Jenkins** tuân theo kiến trúc **Master-Slave** để quản lý `build` phân tán. Trong kiến trúc này, **master** và **slave** giao tiếp với nhau thông qua giao thức TCP/IP.
 - Kiến trúc **Jenkins** bao gồm 2 thành phần :
     - **Jenkins Master / Server**
@@ -39,7 +44,7 @@
 
     <p align=center><img src=https://i.imgur.com/DBiaVvk.png width=50%></p>
 
-### **4.1) Jenkins Master**
+### **5.1) Jenkins Master**
 - Server chính của **Jenkins** sẽ là **Jenkins Master**. Nó là một web dashboard được cung cấp từ 1 file `.war`, mặc định chạy trên cổng `8080`. Với sự trợ giúp của dashboard, ta có thể cấu hình các jobs/projects tuy nhiên quá trình build thì sẽ diễn ra trong các **Nodes/Slaves**. Mặc định, một **node** được cấu hình và chạy trên **Jenkins server**. Có thể add thêm nhiều node sử dụng địa chỉ IP, username và password hoặc sử dụng SSH,...
 - Các công việc chính của **master** :
     - Scheduling build jobs
@@ -47,6 +52,6 @@
     - Giám sát các **slave**
     - Ghi lại và báo cáo kết quả `build`
     - Một **master** cũng có thể thực hiện các build jobs trực tiếp trên chính nó.
-### **4.2) Jenkins Slave**
+### **5.2) Jenkins Slave**
 - **Jenkins Slave** được sử dụng để thực hiện các build jobs được gửi đến từ **master**. Có thể cấu hình mỗi project luôn chạy trên 1 **slave** cụ thể, hoặc cho **Jenkins** tự chọn các **slave** khả dụng
 - Các **slave** có thể chạy bất cứ nền tảng Windows/Linux hay MacOS.
