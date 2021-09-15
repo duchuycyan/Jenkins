@@ -22,27 +22,6 @@
     # git config --global user.name "QuocCuong97"
     # git config --global user.email "cuongnq24101997@gmail.com"
     ```
-### **Cấu hình Jenkins Webhook trên GitHub**
-- **B1 :** Tại repo muốn thực hiện CI/CD, chọn **Settings** :
-
-    <img src=https://i.imgur.com/AqhNmx1.png>
-
-- **B2 :** Chọn **Webhooks** -> ***Add webhook*** :
-
-    <img src=https://i.imgur.com/1VTe6hx.png>
-
-- **B3 :** Trong mục **Payload URL**, nhập vào URL của **Jenkins** (public), theo sau URL là `/github-webhook/`. Trong mục **Content type**, chọn `application/json` :
-
-    <img src=https://i.imgur.com/cIlFotm.png>
-
-- **B4 :** Tại mục **Which events would you like to trigger this webhook?**, chọn ***Let me select individual events.*** Sau đó chọn các event cụ thể muốn trigger tới webhook : ***Pull requests*** và ***Pushes*** -> ***Add Webhook*** :
-
-    <img src=https://i.imgur.com/KGRqj5j.png>
-
-- **B5 :** Webhook được add thành công :
-
-    <img src=https://i.imgur.com/v81m62D.png>
-
 ### **Cấu hình Jenkins**
 - **B4 :** Trên dashboard của **Jenkins**, chọn **Manage Jenkins** :
 

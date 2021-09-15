@@ -73,3 +73,63 @@
       }
     }
     ```
+> Tham khảo **Pipeline Syntax** : https://www.jenkins.io/doc/book/pipeline/syntax/
+## **5) Thao tác với Pineline**
+### **Project GitHub**
+- **Project** : https://github.com/QuocCuong97/pricelist
+- File `Jenkinsfile` tạo sẵn trong project :
+    ```Jenkinsfile
+    pipeline {
+        agent any
+        stages {
+            stage('Clear Old Version') {
+                steps {
+                    echo "Removing old containerized environment..."
+                    sh '/usr/local/bin/docker-compose down -v'
+                }
+            }
+            stage('Deploy Source Code') {
+                steps {
+                    echo "Running source code in a fully containerized environment..."    
+                    sh '/usr/local/bin/docker-compose up -d --build'
+                }
+            }
+        }
+    }
+    ```
+### **Các bước thực hiện**
+- **B1 :** Tạo 1 project **Pipeline**. Trên màn hình Dashboard chọn **New Item** :
+
+    <img src=https://i.imgur.com/ckcFko5.png>
+
+- **B2 :** Nhập tên project, chọn loại ***Pipeline*** -> ***OK*** để khởi tạo project :
+
+    <img src=https://i.imgur.com/IgiVwy7.png>
+
+- **B3 :** Tại section **Pipeline**, nhập một số thông tin sau :
+    - **Definition** : chọn ***Pipeline script from SCM***
+    - **SCM** : chọn ***Git***
+    - **Repository URL** : nhập URL của project **GitHub**
+    - Chọn ***Apply*** -> ***Save*** để lưu lại cấu hình
+
+    <img src=https://i.imgur.com/XR274Q2.png>
+
+- **B4 :** Chọn **Build Now** để tiến hành build pipeline :
+
+    <img src=https://i.imgur.com/Cs1sQZU.png>
+
+- **B5 :** Quá trình build diễn ra :
+
+    <img src=https://i.imgur.com/9YovrzQ.png>
+
+- **B6 :** Sau khi quá trình build thành công, kiểm tra application trên trình duyệt client :
+
+    <img src=https://i.imgur.com/B2lI93q.png>
+
+- **B7 :** Thử chỉnh sửa source code, sau đó build lại lần 2 :
+
+    <img src=https://i.imgur.com/xG9xDbn.png>
+
+- **B8 :** Application đã được deploy source code mới nhất :
+
+    <img src=https://i.imgur.com/k8Gjp3W.png>
