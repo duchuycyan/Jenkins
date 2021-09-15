@@ -18,7 +18,10 @@
 
     <img src=https://i.imgur.com/XjhFvQR.png>
 
-- **B5 :** Kéo xuống mục **Email Notification**, chọn ***Use SMTP Authentication*** sau đó nhập các thông tin sau :
+- **B5 :** Kéo xuống mục **Jenkins Location**, nhập thông tin ***System Admin e-mail address***. Đây sẽ là tên user hiển thị khi gửi mail. Có thể để theo định dạng "`DisplayName <email_id@example.com>`" :
+
+    <img src=https://i.imgur.com/nwQPmXf.png>
+- **B6 :** Kéo xuống mục **Email Notification**, chọn ***Use SMTP Authentication*** sau đó nhập các thông tin sau :
     - User name: email_id@gmail.com (Email sender)
     - Password: *******             (Password Sender)
     - Use SSL: Checked
@@ -28,34 +31,37 @@
 
     <img src=https://i.imgur.com/aCnih6g.png>
 
-- **B6 :** Kiểm tra email test đã nhận được để verify cấu hình đã đúng :
+- **B7 :** Kiểm tra email test đã nhận được để verify cấu hình đã đúng :
 
     <img src=https://i.imgur.com/jvqPuDo.png>
 
     <img src=https://i.imgur.com/RrUfifa.png>
 
-- **B7 :** Quay lại cấu hình email, bỏ chọn ***Test configuration by sending test e-mail*** -> ***Apply*** -> ***Save*** để lưu cấu hình :
+- **B8 :** Quay lại cấu hình email, bỏ chọn ***Test configuration by sending test e-mail*** -> ***Apply*** -> ***Save*** để lưu cấu hình :
 
     <img src=https://i.imgur.com/F2shTys.png>
 
-- **B8 :** Trong **Project** cần build, chọn **Configure** :
+- **B9 :** Trong **Project** cần build, chọn **Configure** :
 
     <img src=https://i.imgur.com/E7sA4Ry.png>
 
-- **B9 :** Tại section **Build**, chọn ***Add post-build action*** -> ***Email Notification*** :
+- **B10 :** Tại section **Build**, chọn ***Add post-build action*** -> ***Email Notification*** :
 
     <img src=https://i.imgur.com/M2Lc08L.png>
 
-- **B10 :** Tại mục **Recipients**, nhập email người nhận (nếu nhiều email, phân tách nhau bằng dấu `space`). Email sẽ được gửi khi build fail, `unstable` hoặc khi trở về trạng thái `stable`. Chọn ***Apply*** -> ***Save*** để lưu lại cấu hình :
+- **B11 :** Tại mục **Recipients**, nhập email người nhận (nếu nhiều email, phân tách nhau bằng dấu `space`). Email sẽ được gửi khi build fail, `unstable` hoặc bản build `stable` đầu tiên sau bản build fail. Ở đây có 2 lựa chọn :
+    - ***Send e-mail for every unstable build*** : gửi email đển tất cả mọi người trong **Recipients**.
+    - ***Send separate e-mails to individuals who broke the build*** : gửi email đển tất cả mọi người trong **Recipients**, đồng thời email tới người đã commit code cuối cùng khiến bản build bị fail
+    - Chọn ***Apply*** -> ***Save*** để lưu lại cấu hình :
 
     <img src=https://i.imgur.com/DvqqfW2.png>
 
-- **B11 :** Tiến hành build project để kiểm tra email trả về.
-- **B12 :** Nếu quá trình build bị lỗi, sẽ nhận được email thông báo :
+- **B12 :** Tiến hành build project để kiểm tra email trả về.
+- **B13 :** Nếu quá trình build bị lỗi, sẽ nhận được email thông báo :
 
-    <img src=https://i.imgur.com/gs7S2M8.png>
+    <img src=https://i.imgur.com/qZbvQeJ.png>
 
     - Sau khi được fix, quá trình build OK trở lại, cũng sẽ nhận được email thông báo :
 
-        <img src=https://i.imgur.com/s1unlQX.png>
+        <img src=https://i.imgur.com/G9F0OBV.png>
 ## **2) Cấu hình Slack Notification**
