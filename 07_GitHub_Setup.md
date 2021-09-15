@@ -22,6 +22,27 @@
     # git config --global user.name "QuocCuong97"
     # git config --global user.email "cuongnq24101997@gmail.com"
     ```
+### **Cấu hình Jenkins Webhook trên GitHub**
+- **B1 :** Tại repo muốn thực hiện CI/CD, chọn **Settings** :
+
+    <img src=https://i.imgur.com/AqhNmx1.png>
+
+- **B2 :** Chọn **Webhooks** -> ***Add webhook*** :
+
+    <img src=https://i.imgur.com/1VTe6hx.png>
+
+- **B3 :** Trong mục **Payload URL**, nhập vào URL của **Jenkins** (public), theo sau URL là `/github-webhook/`. Trong mục **Content type**, chọn `application/json` :
+
+    <img src=https://i.imgur.com/cIlFotm.png>
+
+- **B4 :** Tại mục **Which events would you like to trigger this webhook?**, chọn ***Let me select individual events.*** Sau đó chọn các event cụ thể muốn trigger tới webhook : ***Pull requests*** và ***Pushes*** -> ***Add Webhook*** :
+
+    <img src=https://i.imgur.com/KGRqj5j.png>
+
+- **B5 :** Webhook được add thành công :
+
+    <img src=https://i.imgur.com/v81m62D.png>
+
 ### **Cấu hình Jenkins**
 - **B4 :** Trên dashboard của **Jenkins**, chọn **Manage Jenkins** :
 
@@ -41,16 +62,48 @@
 
 - **B6 :** Nhập tên của project, chọn **Freestyle project** rồi chọn ***OK*** :
 
-    <img src=https://i.imgur.com/IO4FT7d.png>
+    <img src=https://i.imgur.com/bfthe5c.png>
 
 - **B7 :** Tại tab **General**, nhập các thông tin cơ bản như mô tả project,... :
 
-    <img src=https://i.imgur.com/VbzyXYR.png>
+    <img src=https://i.imgur.com/LsMYRum.png>
 
-- **B8 :** Tại tab **Source Code Management**, nhập 1 số cơ bản như thông tin repo, thông tin branch,... rồi chọn ***Apply*** -> ***Save***:
+- **B8 :** Tại tab **Source Code Management**, chọn ***Git***, nhập 1 số cơ bản như thông tin repo, thông tin branch,... rồi chọn ***Apply*** -> ***Save***:
 
-    <img src=https://i.imgur.com/xYYsgmu.png>
+    <img src=https://i.imgur.com/JHyMHGP.png>
 
-    - Vậy là bước đầu ta đã tích hợp được **GitHub** vào **Jenkins** :
+- **B9 :** Tại tab **Build Triggers**, chọn ***GitHub hook trigger for GITScm polling***
 
-        <img src=https://i.imgur.com/fEAH6vq.png>
+    <img src=https://i.imgur.com/AOHKKSc.png>
+
+- **B10 :** Tại tab **Build**, nhập lệnh để build project (ở đây sử dụng `docker-compose`, yêu cầu trên **Jenkins server** được cài đặt `docker` và `docker-compose`) -> ***Apply*** -> ***Save*** :
+
+    <img src=https://i.imgur.com/0frYC4o.png>
+
+### **Build Project**
+- **B1 :** Quay lại màn hình của project vừa tạo, chọn **Build Now** để build project :
+    
+    <img src=https://i.imgur.com/F4OEw10.png>
+
+- **B2 :** Quá trình build thành công :
+
+    <img src=https://i.imgur.com/I8bU8W6.png>
+
+- **B3 :** Kiểm tra trên **Jenkins Server**, ta sẽ thấy container vừa được run thành công : 
+    ```
+    # docker ps
+    ```
+    <img src=https://i.imgur.com/clM4dCM.png>
+
+- **B4 :** Thử truy cập app trên trình duyệt của client :
+    ```
+    http://192.168.5.50
+    ```
+    <img src=https://i.imgur.com/Ggk7OBU.png>
+> ***Chú ý :***
+- Để có thể build thành công `docker-compose` trên **Jenkins**, cần cấp quyền cho user `jenkins` :
+    ```
+    # usermod --shell /bin/bash jenkins
+    # usermod -aG docker jenkins
+    # chown jenkins:docker /var/run/docker.sock
+    ```

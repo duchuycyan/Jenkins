@@ -1,9 +1,9 @@
 # Cài đặt Jenkins trên Linux
 ## **1) Cài đặt trên CentOS 7**
 ### **Cài đặt Jenkins**
-- **B1 :** Cài đặt **OpenJDK 8** :
+- **B1 :** Cài đặt **OpenJDK 11** :
     ```
-    # yum install -y java-1.8.0-openjdk-devel epel-release
+    # yum install -y java-11-openjdk-devel epel-release
     ```
 - **B2 :** Cài đặt **Jenkins repo** :
     ```
