@@ -32,3 +32,46 @@
 - User được tạo thành công :
 
     <img src=https://i.imgur.com/wvk9FX1.png>
+
+### **2.2) Gán role cho user**
+- Truy cập **Manage Jenkins** -> **Manage and Assign Roles** :
+
+    <img src=https://i.imgur.com/NkVohjj.png>
+
+- Chọn **Manage Roles** để tạo các role :
+
+    <img src=https://i.imgur.com/cCdJIz7.png>
+
+- Add thêm một role là `developer` :
+
+    <img src=https://i.imgur.com/LAOIIqY.png>
+
+- Tích chọn các quyền muốn gán cho role `developer` -> ***Apply*** -> ***Save*** để lưu lại :
+
+    <img src=https://i.imgur.com/YO9bvG3.png>
+
+- Chọn **Assign Roles** để gán role cho user :
+
+    <img src=https://i.imgur.com/GQq7oH6.png>
+
+- Add thêm user đã tạo lúc trước để gán role :
+
+    <img src=https://i.imgur.com/v4qdPjG.png>
+
+- Tích chọn role, sau đó chọn ***Apply*** -> ***Save*** để lưu lại :
+
+    <img src=https://i.imgur.com/Sso5n8A.png>
+
+### **2.3) Tạo Project Roles**
+- Sử dụng để gán quyền cho user được truy cập project chỉ định.
+- Truy cập **Manage Jenkins** -> **Manage and Assign Roles** -> **Manage Roles**. Add thêm role vào **Item roles** và phân quyền thêm cho nó. **Pattern** ở đây sẽ để tên project hoặc regex :
+
+    <img src=https://i.imgur.com/YdkcPkG.png>
+
+- Truy cập **Manage Jenkins** -> **Manage and Assign Roles** -> **Assign Roles**. Add thêm user vào role trong **Item roles** :
+
+    <img src=https://i.imgur.com/JDytjXC.png>
+
+- Đăng nhập bằng user vừa phân quyền, ta sẽ thấy user đã được cấp quyền view project chỉ định :
+
+    <img src=https://i.imgur.com/vL3UCjK.png>
