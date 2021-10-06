@@ -48,7 +48,15 @@
     - Khi cần có thể tích hợp **Docker**, **K8s**.
     - Liên tục phát hành tính năng ổn định.
 - ***Đánh giá :*** Công cụ hiện tại được tổ chức với danh sách các tính năng ấn tượng, cung cấp cả miễn phí và giải pháp mức doanh nghiệp.
-## **4) CircleCI**
+## **4) GitHub Actions**
+- Trang chủ : https://github.com/features/actions
+
+    <img src=https://i.imgur.com/5kYDbWv.png>
+
+- **GitHub Actions** ra đời tháng `11` năm `2019`, là tính năng CI có sẵn trên **GitHub**, vì vậy sẽ thuận tiện cho những người sử dụng **GitHub**. **GitHub Actions** không cần server riêng, không cần maintain server, cung cấp cả gói miễn phí và tính phí.
+- **GitHub Actions** khá đơn giản, khi tiến trình `build`, `test` và `deploy` được viết trong một file có định dạng `.yaml` nằm trong thư mục `.github/workflows/` trong chính source code **GitHub**.
+- **GitHub** miễn phí `2000` phút build mỗi tháng cho private/public repo, `500MB` storage để lưu trữ package.
+## **5) CircleCI**
 - Trang chủ : https://circleci.com/
 
     <img src=https://i.imgur.com/RaA9A7x.png>
@@ -69,7 +77,7 @@
     - Ưu tiên tốc độ hơn các thứ khác.
     - Cần chung 1 quy trình và quy trình công việc tuỳ biến cao, tương thích nhiều test tool, không giới hạn repo, user…
 - ***Đánh giá :*** Nếu chi phí không phải vấn đề và cần nhanh thì **CircleCI** là 1 lựa chọn không thể bỏ qua.
-## **5) Travis CI**
+## **6) Travis CI**
 - Trang chủ : https://www.travis-ci.com/
 
     <img src=https://i.imgur.com/VUyB8EL.png>
@@ -89,3 +97,13 @@
     - Cần các máy chủ cơ sở dữ liệu được cài sẵn.
     - Không yêu cầu nhiều tích hợp từ bên thứ 3.
 - ***Đánh giá :*** Là giải pháp tốt cho cả máy chủ và biến thể On-premises, được rất nhiều team yêu thích.
+## **7) Tekton**
+- Trang chủ : https://tekton.dev/
+
+    <img src=https://i.imgur.com/qneStJA.png>
+
+- **Tekton** là một giải pháp cloud-native dùng để build các pipeline. Nó bao gồm **Tekton pipeline**, cung cấp các building block và các thành phần hỗ trợ, chẳng hạn như **Tekton CLI** và **Tekton Catalog**, khiến cho **Tekton** trở thành một hệ sinh thái hoàn chỉnh.
+- **Tekton** là một phần của **CD Foundation**, một dự án của **Linux Foundation**.
+- **Tekton** sẽ được cài đặt và chạy như một extension trên **Kubernetes cluster** và bao gồm một **Kubernetes Custom Resources** để định nghĩa các building block có thể tạo và tái sử dụng cho pipeline.
+- Một khi được cài đặt, **Tekton pipeline** sẽ có thể truy cập thông qua `kubectl` và thông qua API call, giống như **pod** và các resource khác.
+- Hiện tại, **Tekton** được sử dụng như core của **Openshift Pipeline**.
